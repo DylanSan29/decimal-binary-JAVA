@@ -10,10 +10,10 @@ public class Main {
         int out = 0;
         do{
             currentPosition = 0;
-            System.out.print("Give me a number:");
+            System.out.print("Give me a number: ");
             number = sc.nextInt();
             convertToBinary(number);
-            System.out.println("Want to finish? ");
+            System.out.println("Want to finish? 1) Yes / 0) No");
             out = sc.nextInt();
         }while(out == 0);
     }
@@ -37,9 +37,18 @@ public class Main {
             number /= DIVIDER;
             convertToBinary(number);
         }else{
-            for (int i = 0; i < currentPosition; i++) {
-                if(i%4==0 && i!=0)
+            int aux = 0, fillSpace = currentPosition;
+            if(fillSpace % 4 != 0) {
+                do {
+                    System.out.print(0);
+                    fillSpace++;
+                    aux++;
+                }while (fillSpace % 4 != 0);
+            }
+            for (int i = 0; i < currentPosition; i++){
+                if((aux + i) % 4 == 0 ) {
                     System.out.print(" ");
+                }
                 System.out.print(binaryNumber[i]);
             }
             System.out.println();
